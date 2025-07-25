@@ -1,1 +1,44 @@
 # Placeholder for app/templates/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Website Security Scanner</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        input, button { padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Website Security Scanner</h1>
+    <form method="POST">
+        <input type="text" name="url" placeholder="Enter URL (e.g., example.com)" required>
+        <button type="submit">Scan</button>
+    </form>
+
+    {% if result %}
+        <h2>Results:</h2>
+        <ul>
+            <li><strong>HTTPS:</strong> {{ result.https }}</li>
+            <li><strong>SSL Certificate Valid:</strong> {{ result.ssl_valid }}</li>
+            <li><strong>Security Headers:</strong>
+                <ul>
+                    {% for k, v in result.headers.items() %}
+                        <li>{{ k }}: {{ v if v else 'Not Set' }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li><strong>Domain Info:</strong>
+                <ul>
+                    {% for k, v in result.domain_info.items() %}
+                        <li>{{ k }}: {{ v }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+        {% if result.error %}
+            <p style="color: red;">Error: {{ result.error }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
