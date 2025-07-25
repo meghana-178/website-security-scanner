@@ -16,7 +16,7 @@ A simple Flask-based web application to analyze basic website security parameter
 - requests + whois module
 
 ## 🧪 Sample Scan
-![screenshot](screenshots/scan-result.png)
+![screenshot](C:\Users\MEGHANA\Downloads\website-security-scanner\app\templates\scan-result.png)
 
 ## 🛠️ Installation
 ```bash
